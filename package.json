@@ -1,5 +1,5 @@
 {
-  "name": "cfm",
+  "name": "collaborizm-flavoured-markdown",
   "version": "1.0.0",
   "description": "Collaborizm Flavoured Markdown, i.e, Markdown used on Collaborizm.com",
   "main": "./lib/index.js",
