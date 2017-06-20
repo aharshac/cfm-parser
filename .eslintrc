@@ -1,0 +1,14 @@
+{
+  "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": false,
+    "codeFrame": false
+  },
+  "rules": {
+    "linebreak-style": "error",
+    "no-console": "off",
+    "no-useless-escape": "off"
+  }
+}
