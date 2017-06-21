@@ -2,14 +2,14 @@
 
 [![Collaborizm](https://img.shields.io/badge/Collaborizm-Join%20now-blue.svg)](https://www.collaborizm.com/)   
 
-[![NPM](https://nodei.co/npm/collaborizm-flavoured-markdown.png?mini=true)](https://nodei.co/npm/collaborizm-flavoured-markdown)
+[![NPM](https://nodei.co/npm/cfm-parser.png?mini=true)](https://nodei.co/npm/cfm-parser)
 
 
 &nbsp;
 
 ## Installation
 ```
-npm install collaborizm-flavoured-markdown
+npm install cfm-parser
 ```
 
 &nbsp;
