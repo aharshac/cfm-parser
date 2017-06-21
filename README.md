@@ -1,6 +1,7 @@
 # Collaborizm Flavoured Markdown Parser
 
-[![Collaborizm](https://img.shields.io/badge/Collaborizm-Join%20now-blue.svg)](https://www.collaborizm.com/)   
+[![Collaborizm](https://img.shields.io/badge/Collaborizm-Join%20now-blue.svg)](https://www.collaborizm.com/)
+[![Build Status](https://travis-ci.org/aharshac/cfm-parser.svg?branch=master)](https://travis-ci.org/aharshac/cfm-parser)    
 
 [![NPM](https://nodei.co/npm/cfm-parser.png?mini=true)](https://nodei.co/npm/cfm-parser)
 
