@@ -102,9 +102,9 @@ const preProcessNonCode = (blob, { atProfile = '', atProject = '', adHocTag = ''
 /////////
 
 /////////
-const preProcessMd = rawMd => {
+const preProcessMd = (rawMd, config) => {
   const blobs = [];
-  rawMd.split('```').forEach((value, index) => blobs.push(index % 2 === 0 ? preProcessNonCode(value) : value));
+  rawMd.split('```').forEach((value, index) => blobs.push(index % 2 === 0 ? preProcessNonCode(value, config) : value));
   return blobs.join('```');
 }
 /////////

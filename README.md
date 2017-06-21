@@ -1,4 +1,4 @@
-# Collaborizm Flavoured Markdown
+# Collaborizm Flavoured Markdown Parser
 
 [![Collaborizm](https://img.shields.io/badge/Collaborizm-Join%20now-blue.svg)](https://www.collaborizm.com/)   
 
@@ -10,17 +10,17 @@
 ## Installation
 ```
 npm install collaborizm-flavoured-markdown
-```  
+```
 
 &nbsp;
 
 ## Usage
 
 ```js
-import { cfmToHtml } from 'react-relative-time'
+import { cfmToHtml } from 'cfm-parser'
 
 // Import default CSS stylesheet if not using custom
-import 'react-relative-time/css/style.css'
+import 'cfm-parser/css/style.css'
 
 const md = '## *Markdown*'
 const html = cfmToHtml(md)

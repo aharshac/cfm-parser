@@ -1,40 +1,59 @@
 import assert from 'power-assert';
-import RelativeTime from '../src/RelativeTime';
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
+import jsonfile from 'jsonfile';
+import path from 'path';
 
+import { cfmToHtml } from '../src/';
+import { atProfile, atProject, hashTag, adHocHashTag, czmImage, youTube, soundCloud, cfmRef } from './cfm_ref_md';
 
+let stdHtml = {};
 
-describe('react-relative-time', function() {
-  let date = new Date(Date.UTC(1987, 4, 8, 5, 0, 0, 0));
-
-  it('renders date', function() {
-    let markup = ReactDOMServer.renderToString(<RelativeTime value={date} />);
-    assert(/1987\-05\-08/.test(markup));
+describe('cfm-parser', function() {
+  it('loads test standard output', () => {
+    const filePath = path.resolve(__dirname, `./cfm_ref_html.json`);
+    stdHtml = jsonfile.readFileSync(filePath);
   });
 
-  it('renders the title in specified format', function() {
-    let markup = ReactDOMServer.renderToString(<RelativeTime value={date} titleFormat="YYYY" />);
-    assert(/title="1987"/.test(markup));
+  it('parses CFM without crashing', () => {
+    cfmToHtml(cfmRef);
   });
 
-  it('transfers props down to DOM element', function() {
-    let markup = ReactDOMServer.renderToString(<RelativeTime value={date} className="xyz" />);
-    assert(/class="xyz"/.test(markup));
+  it('parses At profile tag', function() {
+    const html = cfmToHtml(atProfile);
+    assert.equal(html, stdHtml.atProfile);
   });
 
-  it('allows passing milliseconds from epoch', function() {
-    let markup = ReactDOMServer.renderToString(<RelativeTime value={1} />);
-    assert(/1970\-01\-01/.test(markup) || /1969\-12\-31/.test(markup));
+  it('parses At project tag', function() {
+    const html = cfmToHtml(atProject);
+    assert.equal(html, stdHtml.atProject);
   });
 
-  it('allows passing ISO-8601 string and "iso8601" as titleFormat specifier', function() {
-    let markup = ReactDOMServer.renderToString(<RelativeTime value="1992-11-01T00:00:00Z" titleFormat="iso8601"/>);
-    assert(/1992\-11\-01T00/.test(markup));
+  it('parses hash tag', function() {
+    const html = cfmToHtml(hashTag);
+    assert.equal(html, stdHtml.hashTag);
   });
 
-  it('does not render current date if value is invalid or null', function() {
-    let markup = ReactDOMServer.renderToString(<RelativeTime />);
-    assert(/Invalid date/.test(markup));
+  it('parses user-defined hash tag', function() {
+    const html = cfmToHtml(adHocHashTag);
+    assert.equal(html, stdHtml.adHocHashTag);
+  });
+
+  it('parses Collaborizm-hosted image', function() {
+    const html = cfmToHtml(czmImage);
+    assert.equal(html, stdHtml.czmImage);
+  });
+
+  it('parses YouTube', function() {
+    const html = cfmToHtml(youTube);
+    assert.equal(html, stdHtml.youTube);
+  });
+
+  it('parses soundCloud', function() {
+    const html = cfmToHtml(soundCloud);
+    assert.equal(html, stdHtml.soundCloud);
+  });
+
+  it('parses CFM reference standard', function() {
+    const html = cfmToHtml(cfmRef);
+    assert.equal(html, stdHtml.cfmRef);
   });
 });
