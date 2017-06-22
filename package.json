@@ -6,7 +6,7 @@
   "scripts": {
     "babel-node": "babel-node --",
     "build": "./node_modules/.bin/babel src -d lib",
-    "gen-ex-html": "babel-node -- ./test/md_parser.js",
+    "gen-ref": "babel-node -- ./test/md_parser.js",
     "postbuild": "./node_modules/.bin/uglifycss --output ./css/style.css ./src_css/style.css",
     "min": "./node_modules/.bin/babel src -d lib --presets=babili",
     "postmin": "./node_modules/.bin/uglifycss --output ./css/style.css ./src_css/style.css",

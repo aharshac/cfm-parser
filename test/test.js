@@ -3,7 +3,8 @@ import jsonfile from 'jsonfile';
 import path from 'path';
 
 import { cfmToHtml } from '../src/';
-import { atProfile, atProject, hashTag, adHocHashTag, czmImage, youTube, soundCloud, cfmRef } from './cfm_ref_md';
+
+import { atProfile, atProject, hashTag, adHocHashTag, czmImage, youTube, soundCloud, cfmRef, customUiClass } from './cfm_ref_md';
 
 let stdHtml = {};
 
@@ -55,5 +56,10 @@ describe('cfm-parser', function() {
   it('parses CFM reference standard', function() {
     const html = cfmToHtml(cfmRef);
     assert.equal(html, stdHtml.cfmRef);
+  });
+
+  it('parses custom UI classes', function() {
+    const html = cfmToHtml(cfmRef, true, customUiClass, 'https://collaborizm.com');
+    assert.equal(html, stdHtml.customUi);
   });
 });
