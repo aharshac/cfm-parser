@@ -1,7 +1,7 @@
 // npm i -D markdown-it markdown-it-emoji markdown-it-task-lists prismjs
 
 import MarkdownIt from 'markdown-it';
-import markdownItEmoji from 'markdown-it-emoji';
+// import markdownItEmoji from 'markdown-it-emoji';
 import taskLists from 'markdown-it-task-lists';
 import Prism from 'prismjs';
 
@@ -46,7 +46,9 @@ const cfmToHtml = (text, linkify = true, uiClass = defaultUiClass, domainName = 
   if (!text)
     return null;
 
-  const md = new MarkdownIt({ ...markdownItOptions, linkify}).use(markdownItEmoji).use(taskLists);
+  const md = new MarkdownIt({ ...markdownItOptions, linkify})
+    // .use(markdownItEmoji)
+    .use(taskLists);
 
   const preMd = preProcessMd(text, { ...uiClass, domainName });
   const rawHtml = md.render(preMd);
