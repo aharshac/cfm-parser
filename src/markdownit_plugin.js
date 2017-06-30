@@ -19,7 +19,7 @@ markdownItOptions.highlight = (str, lang) => {
   const getCodeBlock = (code, lang) => {
     const classAttribute = lang ? `class="language-${lang}"` : '';
     return `<pre ${classAttribute}><code ${classAttribute}>${code}</code></pre>`;
-  }
+  };
 
   if (lang && Prism.languages[lang]) {
     const pLang = Prism.languages[lang];
@@ -55,6 +55,6 @@ const cfmToHtml = (text, linkify = true, uiClass = defaultUiClass, domainName = 
   const postHtml = postProcessHtml(rawHtml, { ...uiClass, domainName });
 
   return postHtml;
-}
+};
 
 export { cfmToHtml, getCloudinaryImageUrl };

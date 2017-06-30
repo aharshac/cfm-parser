@@ -2,9 +2,11 @@ import assert from 'power-assert';
 import jsonfile from 'jsonfile';
 import path from 'path';
 
-import { cfmToHtml } from '../src/';
+import { cfmToHtml } from '../lib/';
 
-import { atProfile, atProject, hashTag, adHocHashTag, czmImage, youTube, soundCloud, cfmRef, customUiClass } from './cfm_ref_md';
+import {
+  inlineCode, multiLineCode, atProfile, atProject, hashTag, adHocHashTag, czmImage, youTube, soundCloud, cfmRef, customUiClass
+} from './cfm_ref_md';
 
 let stdHtml = {};
 
@@ -16,6 +18,16 @@ describe('cfm-parser', function() {
 
   it('parses CFM without crashing', () => {
     cfmToHtml(cfmRef);
+  });
+
+  it('parses inline code', () => {
+    const html = cfmToHtml(inlineCode);
+    assert.equal(html, stdHtml.inlineCode);
+  });
+
+  it('parses block code', () => {
+    const html = cfmToHtml(multiLineCode);
+    assert.equal(html, stdHtml.multiLineCode);
   });
 
   it('parses At profile tag', function() {

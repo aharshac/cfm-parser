@@ -90,9 +90,8 @@ const postBlockquoteReplacer = uiClassBlockquote => `<blockquote class="${uiClas
 // Functions
 //
 /////////
-const preProcessNonCode = (blob, { atProfile = '', atProject = '', adHocTag = '', hashTag = '', }) =>
-  blob
-    .replace(preImageRegex, preImageReplacer)
+const preProcessNonCode = (blob, { atProfile = '', atProject = '', adHocTag = '', hashTag = '' }) =>
+  blob.replace(preImageRegex, preImageReplacer)
     .replace(preYoutubeRegex, preYoutubeReplacer)
     .replace(preSoundcloudRegex, preSoundcloudReplacer)
     .replace(preAtRegex, preAtReplacer(atProfile))
@@ -106,7 +105,7 @@ const preProcessMd = (rawMd, config) => {
   const blobs = [];
   rawMd.split('```').forEach((value, index) => blobs.push(index % 2 === 0 ? preProcessNonCode(value, config) : value));
   return blobs.join('```');
-}
+};
 /////////
 
 

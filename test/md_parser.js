@@ -4,7 +4,9 @@ import path from 'path';
 import { cfmToHtml } from '../src/';
 
 import * as REF from './cfm_ref_md';
-const { atProfile, atProject, hashTag, adHocHashTag, czmImage, youTube, soundCloud, cfmRef, customUiClass } = REF;
+const {
+  inlineCode, multiLineCode, atProfile, atProject, hashTag, adHocHashTag, czmImage, youTube, soundCloud, cfmRef, customUiClass
+} = REF;
 
 const writeToFile = (text) => {
   if (!text) return false;
@@ -29,6 +31,8 @@ const mergeObject = (obj) => {
 */
 
 const output = {
+  inlineCode: cfmToHtml(inlineCode),
+  multiLineCode: cfmToHtml(multiLineCode),
   atProfile: cfmToHtml(atProfile),
   atProject: cfmToHtml(atProject),
   hashTag: cfmToHtml(hashTag),

@@ -1,3 +1,6 @@
+const inlineCode = '`import React, { Component } from \'react\';`';
+
+const multiLineCode = '``` js\n    var foo = function (bar) {\n      return bar++;\n    };\n\n    console.log(foo(5));\n    ```';
 
 const atProfile = '@[Robert Lancer](21339)';
 
@@ -27,4 +30,4 @@ const customUiClass = {
   blockquote: 'uiClass-blockquote'
 };
 
-export { atProfile, atProject, hashTag, adHocHashTag, czmImage, youTube, soundCloud, cfmRef, customUiClass };
+export { inlineCode, multiLineCode, atProfile, atProject, hashTag, adHocHashTag, czmImage, youTube, soundCloud, cfmRef, customUiClass };
