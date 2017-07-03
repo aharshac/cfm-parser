@@ -23,6 +23,10 @@ import { cfmToHtml } from 'cfm-parser'
 // Import default CSS stylesheet if not using custom
 import 'cfm-parser/css/style.css'
 
+// Import styles for CSS highlighting
+// Refer http://prismjs.com/ for theme names
+import 'prismjs/themes/prism-okaidia.css';
+
 const md = '## *Markdown*'
 const html = cfmToHtml(md)
 ```

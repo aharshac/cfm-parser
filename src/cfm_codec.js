@@ -96,8 +96,8 @@ const preProcessNonCode = (blob, { atProfile = '', atProject = '', adHocTag = ''
     .replace(preSoundcloudRegex, preSoundcloudReplacer)
     .replace(preAtRegex, preAtReplacer(atProfile))
     .replace(preAtProjectRegex, preAtProjectReplacer(atProject))
-    .replace(preHashtagRegex, preHashtagReplacer(adHocTag))
-    .replace(preAdhocRegex, preAdhocReplacer(hashTag));
+    .replace(preHashtagRegex, preHashtagReplacer(hashTag))
+    .replace(preAdhocRegex, preAdhocReplacer(adHocTag));
 /////////
 
 /////////
