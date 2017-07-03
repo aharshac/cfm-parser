@@ -1,6 +1,6 @@
 {
   "name": "cfm-parser",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Parser for Collaborizm Flavoured Markdown, i.e, Markdown flavour used on Collaborizm.com",
   "main": "./lib/index.js",
   "scripts": {
