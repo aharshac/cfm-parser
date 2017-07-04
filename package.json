@@ -10,7 +10,9 @@
     "postbuild": "./node_modules/.bin/uglifycss --output ./css/style.css ./src_css/style.css",
     "min": "./node_modules/.bin/babel src -d lib --presets=babili",
     "postmin": "./node_modules/.bin/uglifycss --output ./css/style.css ./src_css/style.css",
-    "test": "./node_modules/.bin/mocha ./test/test.js --compilers js:babel-core/register --reporter spec"
+    "test": "./node_modules/.bin/mocha ./test/test.js --compilers js:babel-core/register --reporter spec",
+    "prepublish": "npm run build",
+    "publish": "npm publish"
   },
   "repository": {
     "type": "git",
