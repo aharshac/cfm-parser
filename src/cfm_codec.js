@@ -48,9 +48,7 @@ const preAdhocReplacer = uiClassAdHocTag =>
 //
 const postImageRegex = /<img.+src="czm:\/\/([^"]+)".*?>/g;
 const postImageReplacer = uiClassImg =>
-  `<div>
-    <img class="${uiClassImg}" src='${getCloudinaryImageUrl('TOBEREPLACED')}' />
-  </div>`
+  `<img class="${uiClassImg}" src='${getCloudinaryImageUrl('TOBEREPLACED')}' />`
   .replace(/TOBEREPLACED/g, 'from_markdown/$1');
 
 const postSpanStartRegex = /~span~class~([^~]*)~/g;
@@ -74,11 +72,12 @@ const soundCloudEmbedReplacer = (whole, scId) => {
 const postYoutubeRegex = /YTSTART\!([a-zA-Z0-9_-]+)\!YTEND/ig;
 const postYoutubeReplacer = (uiClassYoutube, youtubeDomainName) =>
   (whole, ytId) =>
-    `<div class="${uiClassYoutube}">
-      <iframe allowFullScreen='allowFullScreen' type="text/html" width="100%" height="360"
+    `<span class="${uiClassYoutube}">
+      <iframe allowFullScreen='allowFullScreen' type="text/html" width="640" height="360"
         src="https://www.youtube.com/embed/${ytId}?autoplay=0&origin=${youtubeDomainName}"
-        frameborder="0"></iframe>
-    </div>`;
+        frameborder="0">
+      </iframe>
+    </span>`;
 
 const postTableRegex = /<table.*?/g;
 const postTableReplacer = uiClassTable => `<table class="${uiClassTable}"`;

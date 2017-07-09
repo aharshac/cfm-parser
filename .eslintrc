@@ -15,7 +15,8 @@
   },
   "rules": {
     "linebreak-style": "error",
-    "no-console": "off",
-    "no-useless-escape": "off"
+    "no-console": "warn",
+    "no-useless-escape": "off",
+    "no-unused-vars": "warn"
   }
 }

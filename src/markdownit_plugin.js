@@ -3,8 +3,9 @@
 import MarkdownIt from 'markdown-it';
 // import markdownItEmoji from 'markdown-it-emoji';
 import taskLists from 'markdown-it-task-lists';
-import Prism from 'prismjs';
+// import Prism from 'prismjs';
 
+import inputLineNumbering from './input_line_numbers';
 import { preProcessMd, postProcessHtml, getCloudinaryImageUrl } from './cfm_codec';
 
 
@@ -15,21 +16,21 @@ const markdownItOptions = {
   html: false,
 };
 
-markdownItOptions.highlight = (str, lang) => {
-  const getCodeBlock = (code, lang) => {
-    const classAttribute = lang ? `class="language-${lang}"` : '';
-    return `<pre ${classAttribute}><code ${classAttribute}>${code}</code></pre>`;
-  };
-
-  if (lang && Prism.languages[lang]) {
-    const pLang = Prism.languages[lang];
-    try {
-      return getCodeBlock(Prism.highlight(str, pLang), lang);
-    } catch (__) { null; }
-  }
-
-  return getCodeBlock(Prism.highlight(str, Prism.languages.clike), "clike");
-};
+// markdownItOptions.highlight = (str, lang) => {
+//   const getCodeBlock = (code, lang) => {
+//     const classAttribute = lang ? `class="language-${lang}"` : '';
+//     return `<pre ${classAttribute}><code ${classAttribute}>${code}</code></pre>`;
+//   };
+//
+//   if (lang && Prism.languages[lang]) {
+//     const pLang = Prism.languages[lang];
+//     try {
+//       return getCodeBlock(Prism.highlight(str, pLang), lang);
+//     } catch (__) { null; }
+//   }
+//
+//   return getCodeBlock(Prism.highlight(str, Prism.languages.clike), "clike");
+// };
 
 const defaultUiClass = {
   atProfile: 'md-at-person',
@@ -42,13 +43,21 @@ const defaultUiClass = {
   blockquote: 'md-blockquote'
 };
 
-const cfmToHtml = (text, linkify = true, uiClass = defaultUiClass, domainName = '') => {
+const cfmToHtml = (text, linkify = true, uiClass = defaultUiClass, domainName = '', sourceLineNumber = true) => {
   if (!text)
     return null;
 
   const md = new MarkdownIt({ ...markdownItOptions, linkify})
     // .use(markdownItEmoji)
     .use(taskLists);
+
+  if (sourceLineNumber) {
+    md.use(inputLineNumbering);
+  }
+
+  if (!uiClass) {
+    uiClass = defaultUiClass;
+  }
 
   const preMd = preProcessMd(text, { ...uiClass, domainName });
   const rawHtml = md.render(preMd);

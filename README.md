@@ -20,6 +20,11 @@ npm install cfm-parser
 ```js
 import { cfmToHtml } from 'cfm-parser'
 
+// Add Prism nom-default language
+// No need for markup, css, clike, javascript
+// Refer http://prismjs.com/#languages-list
+import 'prismjs/components/prism-markdown.js';
+
 // Import default CSS stylesheet if not using custom
 import 'cfm-parser/css/style.css'
 
@@ -34,7 +39,7 @@ const html = cfmToHtml(md)
 &nbsp;
 
 ## Reference
-### Function `cfmToHtml(markdown, linkify, uiClass, domainName)`
+### Function `cfmToHtml(markdown, linkify, uiClass, domainName, sourceLineNumber)`
 Converts Collaborizm Flavoured Markdown to HTML.    
 
 * `markdown`    
@@ -64,3 +69,7 @@ Converts Collaborizm Flavoured Markdown to HTML.
 * `domainName`    
   Domain name parameter for YouTube embed.    
   *Default*: **''**    
+
+* `sourceLineNumber`    
+  Add a `data-input-line` attribute to each topmost HTML element that corresponds to the line number of the source markdown    
+  *Default*: **true**    
